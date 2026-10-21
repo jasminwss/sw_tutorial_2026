@@ -159,7 +159,7 @@ def book_histogram(stats):
 # ===========================================================================
 def fill_histogram(h_mystery, masses):
     for mass in masses:
-        h_mystery.Fill(mass)  
+        h_mystery.Fill(mass)
     entries = h_mystery.GetEntries()
     underflow = h_mystery.GetBinContent(0)
     overflow = h_mystery.GetBinContent(h_mystery.GetNbinsX() + 1)
@@ -205,7 +205,7 @@ def make_model(h_mystery):
     last = h_mystery.FindLastBinAbove(half_max)
     Width = h_mystery.GetBinCenter(last) - h_mystery.GetBinCenter(first)
     Width = max(Width, h_mystery.GetBinWidth(1))  # avoid 0 if the peak is only one bin wide
-    Normalization = h_mystery.Integral() * h_mystery.GetBinWidth(1)  # total area under the histogram
+    Normalization = h_mystery.Integral() * h_mystery.GetBinWidth(1)
     f_func.SetParameters(Normalization, Mass, Width)
     f_func.SetParNames("N", "M", "#Gamma")
     return f_func
